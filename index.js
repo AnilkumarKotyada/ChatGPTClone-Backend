@@ -12,9 +12,12 @@ const { default: axios } = require("axios");
 require("dotenv").config();
 
 app.use(cors({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-  }));
+  origin: '*', // Allows all origins
+  credentials: true, // Allow cookies & authentication headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use("/c", authenticateToken);
 app.use(express.json());
 
